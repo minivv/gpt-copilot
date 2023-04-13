@@ -1,0 +1,49 @@
+<!-- Plugin Configuration File. Read more: https://plugins.jetbrains.com/docs/intellij/plugin-configuration-file.html -->
+<idea-plugin require-restart="true">
+    <id>com.minivv.pilot</id>
+    <name>gpt-copilot</name>
+    <version>1.0.23.0312</version>
+    <vendor email="kuweiguge@gmail.com" url="">kuwei</vendor>
+    <depends>com.intellij.modules.platform</depends>
+
+    <description><![CDATA[
+<h3>English:</h3>
+    <p>Have you ever wished for a personal code assistant that can help you quickly write high-quality code and customize it to your individual needs while you're writing code? Now, all of this is possible!</p>
+<p>We are proud to introduce our latest development tool, a plugin similar to GitHub Copilot Labs but with more personalized and customizable features. With our plugin, you can easily add custom preset commands to quickly obtain code snippets and functions, thereby improving your development efficiency. You can also set up a proxy to ensure that your code assistant interacts with your development environment in the most efficient and secure manner possible.</p>
+<p>Whether you're an individual developer or part of a team, this plugin can make your work more efficient and enjoyable. Let our plugin be your first choice for a personal code assistant!</p>
+<h4>Usage:</h4>
+<p>1. Open the plugin settings and set the proxy if needed.</p>
+<p>2. Use {query} to replace the code you selected.</p>
+<p>3. The menu can be accessed by right-clicking, selecting "gpt-copilot", and then using it.</p>
+<br>
+<h3>中文:</h3>
+	    <p>当您在编写代码时，您是否曾经希望有一个个人代码助手，可以帮助您快速编写出高质量的代码，同时还可以根据您的个性化需求进行自定义？现在，这一切都成为了可能！</p>
+<p>我们很自豪地推出我们的最新开发工具，这是一款类似于GitHub Copilot Labs的插件，但具有更多的个性化和自定义功能。使用我们的插件，您可以轻松地添加自定义预设指令，使您可以快速获得代码片段和函数，从而提高您的开发效率。您还可以设置代理，确保您的代码助手始终以最高效和最安全的方式与您的开发环境进行交互。</p>
+<p>无论您是一个独立的开发人员，还是一支团队，这个插件都可以让您的工作更加高效和愉快。让我们的插件成为您个人代码助手的首选！</p>
+<h4>使用:</h4>
+<p>1. 打开插件设置，如有需要，请设置代理。</p>
+<p>2. 使用 {query} 替换所选代码。</p>
+<p>3. 右键呼出菜单，选择 "gpt-copilot"，即可使用。</p>
+      ]]></description>
+
+    <change-notes><![CDATA[
+            <br>1.0.23.0312 - The first release
+			]]>
+    </change-notes>
+
+    <extensions defaultExtensionNs="com.intellij">
+        <projectConfigurable parentId="tools"
+                             id="ChatGPTPilot"
+                             instance="com.minivv.pilot.AppConfigurable"
+                             displayName="gpt-copilot"/>
+        <applicationService serviceImplementation="com.minivv.pilot.state.AppSettingsStorage"/>
+
+    </extensions>
+
+    <projectListeners>
+        <listener class="com.minivv.pilot.AppProjectManagerListener"
+                  topic="com.intellij.openapi.project.ProjectManagerListener"/>
+    </projectListeners>
+
+    <actions></actions>
+</idea-plugin>
